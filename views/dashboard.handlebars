@@ -1,4 +1,6 @@
+<h2>Welcome {{name}}</h2>
 <form id="blog-post-form"></form>
+<h3>New Blog Post</h3>
 <div class="mb-3">
   <label for="post-title" class="form-label">Blog Post Title</label>
   <input type="email" class="form-control" id="post-title" placeholder="Blog Title">
@@ -9,3 +11,17 @@
 </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+{{#if blogposts.length}}
+<h2>Previous Blog Posts</h2>
+
+{{#each blogposts as |blogpost|}}
+<div class="card-body"><a class="card-title" href="/blogpost/{{blogpost.id}}">{{blogpost.title}}</a>
+  <div class="col-md-4">
+    <button class="btn btn-sm btn-danger" data-id="{{blogpost.id}}">DELETE</button>
+  </div>
+</div>
+{{/each}}
+{{/if}}
+
+<script src="/js/dashboard.js"></script>
